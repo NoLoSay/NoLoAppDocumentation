@@ -108,7 +108,40 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,7 +164,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,6 +207,17 @@
 import React, { createContext, useMemo, useState } from 'react'
 import { AccountContextType, AccountType } from '@global/types/Account'
 &nbsp;
+/**
+ * @constant defaultAccount Default account data
+ * @type {AccountType} defaultAccount
+ * @default defaultAccount
+ * @description Default account data
+ * @property {boolean} authentified Default account authentified
+ * @property {string} email Default account email
+ * @property {string} phoneNumber Default account phoneNumber
+ * @property {string} username Default account username
+ * @property {string} accessToken Default account accessToken
+ */
 export const defaultAccount: AccountType = {
   authentified: false,
   email: '',
@@ -174,6 +229,9 @@ export const defaultAccount: AccountType = {
 /**
  * @function AccountContext
  * @description Context that stores the account data.
+ * @param {AccountContextType} props AccountContext props
+ * @param {AccountType} props.account AccountContext account
+ * @param {React.Dispatch&lt;React.SetStateAction&lt;AccountType&gt;&gt;} props.setAccount AccountContext setAccount
  * @returns {React.Context&lt;AccountContextType&gt;} AccountContext
  */
 export const AccountContext = createContext&lt;AccountContextType&gt;({
@@ -182,6 +240,12 @@ export const AccountContext = createContext&lt;AccountContextType&gt;({
   setAccount: <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
 })
 &nbsp;
+/**
+ * @interface AccountProviderProps
+ * @description AccountProvider component props
+ * @extends {React.PropsWithChildren&lt;React.ReactNode&gt;} React children
+ * @property {React.ReactNode} children AccountProvider children
+ */
 interface AccountProviderProps {
   children: React.ReactNode
 }
@@ -189,6 +253,8 @@ interface AccountProviderProps {
 /**
  * @function AccountProvider
  * @description Component that provides the account data.
+ * @param {AccountProviderProps} props AccountProvider props
+ * @param {React.ReactNode} props.children AccountProvider children
  * @returns {React.JSX.Element} AccountContext provider
  */
 export function <span class="fstat-no" title="function not covered" >AccountProvider(</span>{ children }: AccountProviderProps): React.JSX.Element {
@@ -205,7 +271,7 @@ export function <span class="fstat-no" title="function not covered" >AccountProv
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-19T00:49:38.553Z
+                at 2023-09-19T01:04:25.639Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
