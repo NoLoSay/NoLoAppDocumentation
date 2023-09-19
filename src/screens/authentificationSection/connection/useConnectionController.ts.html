@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/22</span>
+                <span class='fraction'>13/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>2/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/22</span>
+                <span class='fraction'>13/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -195,12 +195,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -234,16 +234,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -329,14 +329,14 @@ export default function useConnectionController({ navigation }: useConnectionCon
       })
   }
 &nbsp;
-  async function <span class="fstat-no" title="function not covered" >forgottenPassword(</span>) {
-<span class="cstat-no" title="statement not covered" >    setError(undefined)</span>
-<span class="cstat-no" title="statement not covered" >    if (emailRegex.test(email) === false) {</span>
-<span class="cstat-no" title="statement not covered" >      setError('Veuillez rentrer un email valide')</span>
-<span class="cstat-no" title="statement not covered" >      return</span>
+  async function forgottenPassword() {
+    setError(undefined)
+    if (emailRegex.test(email) === false) {
+      setError('Veuillez rentrer un email valide')
+      return
     }
-<span class="cstat-no" title="statement not covered" >    await forgotPassword({ email })</span>
-<span class="cstat-no" title="statement not covered" >    Alert.alert('Email envoyé', 'Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe.')</span>
+    await forgotPassword({ email })
+    Alert.alert('Email envoyé', 'Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe.')
   }
 &nbsp;
   return {
@@ -358,7 +358,7 @@ export default function useConnectionController({ navigation }: useConnectionCon
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-08T23:04:53.598Z
+                at 2023-09-19T00:49:38.553Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
