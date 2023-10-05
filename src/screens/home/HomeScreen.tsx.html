@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -98,7 +98,25 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,6 +146,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,10 +166,14 @@
  * @requires react react-native
  */
 &nbsp;
-import React, { useContext } from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import React from 'react'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import { colors } from '@global/colors'
-import { AccountContext } from '@source/global/contexts/AccountProvider'
+import { useNavigation } from '@react-navigation/native'
+import HeaderView from './Views/HeaderView'
+import useHomeScreenController from './useHomeScreenController'
+import CarouselView from './CarouselView/CarouselView'
+import MapView from './MapView/MapView'
 &nbsp;
 /**
  * @function HomeScreen
@@ -151,23 +181,32 @@ import { AccountContext } from '@source/global/contexts/AccountProvider'
  * @returns {React.JSX.Element} App component template
  */
 export default function HomeScreen(): React.JSX.Element {
-  const { account } = useContext(AccountContext)
+  const { city, currentPage, displaySearchBar, toggleSearchBar, searchValue, setSearchValue, togglePage, places } =
+    useHomeScreenController()
 &nbsp;
   return (
-    &lt;SafeAreaView
-      style={{
-        backgroundColor: colors.accent,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    &gt;
-      &lt;View&gt;
-        &lt;Text&gt;{account.username}&lt;/Text&gt;
-      &lt;/View&gt;
+    &lt;SafeAreaView style={styles.container}&gt;
+      &lt;HeaderView
+        city={city}
+        page={currentPage}
+        togglePage={togglePage}
+        displaySearchBar={displaySearchBar}
+        toggleSearchBar={toggleSearchBar}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      /&gt;
+      {currentPage === 'carousel' &amp;&amp; &lt;CarouselView places={places} /&gt;}
+      {currentPage === 'map' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;MapView places={places} /&gt;}</span>
     &lt;/SafeAreaView&gt;
   )
 }
+&nbsp;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.veryLightGrey,
+    flex: 1,
+  },
+})
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -175,7 +214,7 @@ export default function HomeScreen(): React.JSX.Element {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-19T01:04:25.639Z
+                at 2023-10-05T04:41:32.098Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
