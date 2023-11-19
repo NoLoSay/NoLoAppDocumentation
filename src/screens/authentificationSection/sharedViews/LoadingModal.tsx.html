@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/screens/settings/Views/Input.tsx</title>
+    <title>Code coverage report for src/screens/authentificationSection/sharedViews/LoadingModal.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/screens/settings/Views</a> Input.tsx</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/screens/authentificationSection/sharedViews</a> LoadingModal.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,15 +118,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,14 +143,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,7 +153,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,7 +160,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,66 +174,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * @fileoverview Input view for the SettingsScreen component
- * @module Input
- * @description Input view for the SettingsScreen component
+ * @fileoverview Loading modal component
+ * @module LoadingModal
+ * @description Component that renders a loading modal.
  * @requires react react-native
+ * @requires Modal react-native
+ * @requires View react-native
+ * @requires ActivityIndicator react-native
+ * @requires StyleSheet react-native
  */
-import colors from '@source/global/colors'
+&nbsp;
 import React from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import colors from '@source/global/colors'
+import { Modal, View, ActivityIndicator, StyleSheet } from 'react-native'
 &nbsp;
 type Props = {
-  value: string
-  setValue: (value: string) =&gt; void
-  placeholder: string
-  autoCapitalize: TextInput['props']['autoCapitalize']
+  visible: boolean
 }
 &nbsp;
 /**
- * @function Input
- * @description Component that renders the Input view.
- * @param value Input value
- * @param setValue Input value setter
- * @param placeholder Input placeholder
- * @param autoCapitalize Should the input capitalize the first letter of each word
- * @returns {React.JSX.Element} Input component template
+ * @function LoadingModal
+ * @param visible Wether the modal is visible or not
+ * @returns
  */
-export default function Input({ value, setValue, placeholder, autoCapitalize }: Props) {
+export default function LoadingModal({ visible }: Props) {
   return (
-    &lt;View style={styles.container}&gt;
-      &lt;Text style={styles.inputName}&gt;{`${placeholder}:`}&lt;/Text&gt;
-      &lt;TextInput
-        style={styles.inputContainer}
-        onChangeText={<span class="fstat-no" title="function not covered" >(t</span>: string) =&gt; <span class="cstat-no" title="statement not covered" >setValue(t)}</span>
-        placeholder={placeholder}
-        autoCapitalize={autoCapitalize}
-        value={value}
-        placeholderTextColor={colors.darkGrey}
-      /&gt;
-    &lt;/View&gt;
+    &lt;Modal
+      visible={visible}
+      transparent
+    &gt;
+      &lt;View style={styles.background}&gt;
+        &lt;View style={styles.container}&gt;
+          &lt;ActivityIndicator
+            size='large'
+            color={colors.accent}
+          /&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    &lt;/Modal&gt;
   )
 }
 &nbsp;
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000000A0',
+  },
   container: {
-    width: '100%',
-    flexDirection: 'row',
-    marginBottom: 40,
-  },
-  inputName: {
-    textAlign: 'left',
-    flex: 1,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-  },
-  inputContainer: {
-    color: colors.black,
-    borderBottomColor: colors.accent,
-    borderBottomWidth: 2,
-    flex: 1,
-    fontFamily: 'Poppins',
-    fontSize: 14,
+    backgroundColor: 'white',
+    padding: 62,
+    borderRadius: 8,
   },
 })
 &nbsp;</pre></td></tr></table></pre>
