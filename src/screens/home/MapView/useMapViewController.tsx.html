@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/10</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">40% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/5</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>5/9</span>
             </div>
         
             
@@ -122,17 +122,8 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,20 +146,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,7 +172,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -205,13 +185,14 @@
 import { AccountType } from '@source/global/types/Account'
 import { Place } from '@source/global/types/Places'
 import { Ref, useContext, useRef } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Platform } from 'react-native'
 import MapView from 'react-native-maps'
 &nbsp;
 interface MapViewController {
   account: AccountType
   mapRef: Ref&lt;MapView&gt;
   onMarkerPress: (place: Place) =&gt; void
+  isMapAvailable: () =&gt; boolean
 }
 &nbsp;
 interface Props {
@@ -224,20 +205,6 @@ export default function useMapViewController({ navigation }: Props): MapViewCont
 &nbsp;
   const navigateToPlaceDescription = <span class="fstat-no" title="function not covered" >(p</span>lace: Place) =&gt; {
 <span class="cstat-no" title="statement not covered" >    navigation.navigate('PlaceDescription', { place })</span>
-  }
-&nbsp;
-  const goBackToUserLocation = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore: Object is possibly 'null'.
-<span class="cstat-no" title="statement not covered" >    mapRef.current?.animateToRegion(</span>
-      {
-        latitude: account.localisation?.coords.latitude ?? 0.0,
-        longitude: account.localisation?.coords.longitude ?? 0.0,
-        latitudeDelta: 0.02,
-        longitudeDelta: 0.02,
-      },
-      500
-    )
   }
 &nbsp;
   function <span class="fstat-no" title="function not covered" >onMarkerPress(</span>place: Place) {
@@ -264,10 +231,13 @@ export default function useMapViewController({ navigation }: Props): MapViewCont
     ])
   }
 &nbsp;
+  const isMapAvailable = () =&gt; Platform.OS === 'ios' || <span class="branch-1 cbranch-no" title="branch not covered" >Platform.OS === 'macos'</span>
+&nbsp;
   return {
     account,
     mapRef,
     onMarkerPress,
+    isMapAvailable,
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -277,7 +247,7 @@ export default function useMapViewController({ navigation }: Props): MapViewCont
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-18T21:52:59.175Z
+                at 2023-11-19T03:46:13.885Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
