@@ -108,7 +108,40 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -123,9 +156,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,26 +203,48 @@ import { ContentCategoryId } from '../../../global/types/AddContentCategory'
 import { AccountElevationEnum, AccountType } from '../../../global/types/Account'
 import { AccountContext } from '../../../global/contexts/AccountProvider'
 &nbsp;
+/**
+ * @typedef {Object} useActionScreenControllerProps
+ * @property {AccountType} account - Account of the user
+ * @property {function} displayAdminCategory - Function to call to know if the admin category should be displayed
+ * @property {function} onCategoryPress - Function to call when a category is pressed
+ */
 interface useActionScreenControllerProps {
   account: AccountType
   displayAdminCategory: (categoryElevation?: AccountElevationEnum) =&gt; boolean
   onCategoryPress: (categoryId: string) =&gt; void
 }
 &nbsp;
+/**
+ * @function useActionsScreenController
+ * @description Business logic of the Actions screen
+ * @returns {useActionScreenControllerProps} - Object containing the business logic of the screen
+ */
 export default function useActionsScreenController(): useActionScreenControllerProps {
   const { account } = useContext(AccountContext)
   const navigation = useNavigation()
 &nbsp;
+  /**
+   * @function displayAdminCategory
+   * @description Function to call to know if the admin category should be displayed
+   * @param categoryElevation - Elevation required to access the category
+   * @returns {boolean} - Boolean indicating if the admin category should be displayed
+   */
   const displayAdminCategory = (categoryElevation?: AccountElevationEnum) =&gt; {
     return account.elevation &gt;= (categoryElevation ?? AccountElevationEnum.USER)
   }
 &nbsp;
+  /**
+   * @function onCategoryPress
+   * @description Function handling the press on a category
+   * @param categoryId - Id of the category pressed
+   */
   function <span class="fstat-no" title="function not covered" >onCategoryPress(</span>categoryId: string) {
 <span class="cstat-no" title="statement not covered" >    switch (categoryId) {</span>
       case ContentCategoryId.ADDCONTENT:
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-<span class="cstat-no" title="statement not covered" >        navigation.navigate('VideoScreen')</span>
+<span class="cstat-no" title="statement not covered" >        navigation.navigate('PlacesNeedingTranslation')</span>
 <span class="cstat-no" title="statement not covered" >        break</span>
       case ContentCategoryId.LIBRARY:
 <span class="cstat-no" title="statement not covered" >        console.log('Pressed on library')</span>
@@ -205,7 +271,7 @@ export default function useActionsScreenController(): useActionScreenControllerP
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-12T20:26:34.342Z
+                at 2023-12-21T15:06:51.705Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
