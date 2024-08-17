@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">36.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/39</span>
+                <span class='fraction'>15/41</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">23.07% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/12</span>
+                <span class='fraction'>3/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.47% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/38</span>
+                <span class='fraction'>15/40</span>
             </div>
         
             
@@ -236,7 +236,15 @@
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,7 +302,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -373,6 +383,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -393,6 +408,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -459,6 +475,7 @@ interface HomeScreenController {
   onRefresh: () =&gt; void
   isRefreshing: boolean
   isSuccessful: boolean
+  goToFilterPage: () =&gt; void
 }
 &nbsp;
 /**
@@ -466,7 +483,8 @@ interface HomeScreenController {
  * @description HomeScreenController hook logic function
  * @returns {HomeScreenController} The controller of the HomeScreen component
  */
-export default function useHomeScreenController(): HomeScreenController {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function useHomeScreenController(navigation: any): HomeScreenController {
   const [city, setCity] = useState('')
   const [currentPage, setCurrentPage] = useState&lt;'map' | 'carousel'&gt;('carousel')
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
@@ -544,6 +562,11 @@ export default function useHomeScreenController(): HomeScreenController {
 <span class="cstat-no" title="statement not covered" >    setDisplaySearchBar(!displaySearchBar)</span>
   }
 &nbsp;
+  function <span class="fstat-no" title="function not covered" >goToFilterPage(</span>) {
+<span class="cstat-no" title="statement not covered" >    navigation.navigate('FilterModal')</span>
+<span class="cstat-no" title="statement not covered" >    setDisplaySearchBar(false)</span>
+  }
+&nbsp;
   function <span class="fstat-no" title="function not covered" >getNearestPlaces(</span>) {
     let localisation = <span class="cstat-no" title="statement not covered" >{</span>
       latitude: 0,
@@ -580,6 +603,7 @@ export default function useHomeScreenController(): HomeScreenController {
     onRefresh,
     isRefreshing: noloPlacesMutation.isPending,
     isSuccessful: noloPlacesMutation.isSuccess || noloPlacesMutationUsingSearch.isSuccess,
+    goToFilterPage,
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -589,7 +613,7 @@ export default function useHomeScreenController(): HomeScreenController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-02T11:59:59.211Z
+                at 2024-08-17T13:00:23.062Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
