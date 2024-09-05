@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.43% </span>
+                <span class="strong">21.05% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/23</span>
+                <span class='fraction'>4/19</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
@@ -257,10 +257,7 @@
 <a name='L192'></a><a href='#L192'>192</a>
 <a name='L193'></a><a href='#L193'>193</a>
 <a name='L194'></a><a href='#L194'>194</a>
-<a name='L195'></a><a href='#L195'>195</a>
-<a name='L196'></a><a href='#L196'>196</a>
-<a name='L197'></a><a href='#L197'>197</a>
-<a name='L198'></a><a href='#L198'>198</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L195'></a><a href='#L195'>195</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -442,9 +439,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -465,7 +459,7 @@
  */
 &nbsp;
 import { NativeModules, Platform } from 'react-native'
-import { DEV_API_URL, PROD_API_URL } from '@env'
+import { API_URL } from '@env'
 import { Header } from '@global/types/httpClient/Header'
 &nbsp;
 /**
@@ -505,7 +499,7 @@ interface PostProps {
  * @returns Promise of a Response object
  */
 export function <span class="fstat-no" title="function not covered" >post(</span>{
-  url = <span class="branch-0 cbranch-no" title="branch not covered" >PROD_API_URL,</span>
+  url = <span class="branch-0 cbranch-no" title="branch not covered" >API_URL,</span>
   endpoint,
   body,
   headers = <span class="branch-0 cbranch-no" title="branch not covered" >defaultHeaders,</span>
@@ -532,7 +526,7 @@ export function <span class="fstat-no" title="function not covered" >post(</span
  * @returns Promise of a Response object
  */
 export function <span class="fstat-no" title="function not covered" >put(</span>{
-  url = <span class="branch-0 cbranch-no" title="branch not covered" >PROD_API_URL,</span>
+  url = <span class="branch-0 cbranch-no" title="branch not covered" >API_URL,</span>
   endpoint,
   body,
   headers = <span class="branch-0 cbranch-no" title="branch not covered" >defaultHeaders,</span>
@@ -566,7 +560,7 @@ interface DeleteProps {
  * @returns Promise of a Response object
  */
 export function <span class="fstat-no" title="function not covered" >deleteRequest(</span>{
-  url = <span class="branch-0 cbranch-no" title="branch not covered" >PROD_API_URL,</span>
+  url = <span class="branch-0 cbranch-no" title="branch not covered" >API_URL,</span>
   endpoint,
   headers = <span class="branch-0 cbranch-no" title="branch not covered" >defaultHeaders,</span>
   authorizationToken = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span>
@@ -597,7 +591,7 @@ interface GetProps {
  * @returns Promise of a Response object
  */
 export function get({
-  url = <span class="branch-0 cbranch-no" title="branch not covered" >PROD_API_URL,</span>
+  url = <span class="branch-0 cbranch-no" title="branch not covered" >API_URL,</span>
   endpoint,
   headers = defaultHeaders,
   authorizationToken = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span>
@@ -632,18 +626,15 @@ interface RequestServerProps {
  * @returns Promise of a Response object
  */
 export function requestServer({
-  url = <span class="branch-0 cbranch-no" title="branch not covered" >PROD_API_URL,</span>
+  url = <span class="branch-0 cbranch-no" title="branch not covered" >API_URL,</span>
   endpoint,
   method,
   headers,
   body,
   authorizationToken,
 }: RequestServerProps): Promise&lt;Response&gt; {
-  let finalURL
-  if (url === PROD_API_URL &amp;&amp; __DEV__) finalURL = DEV_API_URL
-  else <span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>finalURL = url</span>
-  <span class="missing-if-branch" title="else path not taken" >E</span>if (__DEV__) console.log('finalURL:', finalURL + endpoint)
-  return fetch(finalURL + endpoint, {
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (__DEV__) console.log('finalURL:', url + endpoint)
+  return fetch(url + endpoint, {
     method,
     headers: {
       Accept: headers.Accept,
@@ -661,7 +652,7 @@ export function requestServer({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-17T13:35:21.569Z
+                at 2024-09-05T14:27:42.815Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
