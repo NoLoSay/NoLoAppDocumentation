@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.77% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/45</span>
+                <span class='fraction'>20/48</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.63% </span>
+                <span class="strong">42.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/44</span>
+                <span class='fraction'>20/47</span>
             </div>
         
             
@@ -255,7 +255,17 @@
 <a name='L190'></a><a href='#L190'>190</a>
 <a name='L191'></a><a href='#L191'>191</a>
 <a name='L192'></a><a href='#L192'>192</a>
-<a name='L193'></a><a href='#L193'>193</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,6 +333,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,6 +350,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -430,6 +447,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -491,6 +509,7 @@ interface HomeScreenController {
   setSearchValue: (value: string) =&gt; void
   togglePage: () =&gt; void
   places: Place[]
+  latestPlaces: Place[]
   getNearestPlaces: () =&gt; Place[]
   getAllPlacesUsingSearch: () =&gt; void
   isLoading: boolean
@@ -514,6 +533,7 @@ export default function useHomeScreenController(navigation: any): HomeScreenCont
   const [searchValue, setSearchValue] = useState('')
   const { account, setAccount } = useContext(AccountContext)
   const [places, setPlaces] = useState&lt;Place[]&gt;([])
+  const [latestPlaces, setLatestPlaces] = useState&lt;Place[]&gt;([])
   const noloPlacesMutation = useNoloPlaces({
     setPlaces,
     token: account.accessToken,
@@ -523,9 +543,15 @@ export default function useHomeScreenController(navigation: any): HomeScreenCont
     q: searchValue,
     token: account.accessToken,
   })
+  const noloLatestPlacesMutation = useNoloPlaces({
+    setPlaces: setLatestPlaces,
+    token: account.accessToken,
+    getLatest: true,
+  })
 &nbsp;
   const getAllPlaces = () =&gt; {
     noloPlacesMutation.mutate()
+    noloLatestPlacesMutation.mutate()
   }
 &nbsp;
   const getAllPlacesUsingSearch = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -618,7 +644,7 @@ export default function useHomeScreenController(navigation: any): HomeScreenCont
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return distanceA - distanceB</span>
     })
-<span class="cstat-no" title="statement not covered" >    return placesOrderedByDistance.slice(0, 5)</span>
+<span class="cstat-no" title="statement not covered" >    return placesOrderedByDistance.slice(0, 10)</span>
   }
 &nbsp;
   return {
@@ -630,6 +656,7 @@ export default function useHomeScreenController(navigation: any): HomeScreenCont
     setSearchValue,
     togglePage,
     places,
+    latestPlaces,
     getNearestPlaces,
     getAllPlacesUsingSearch,
     isLoading: noloPlacesMutation.isPending || noloPlacesMutationUsingSearch.isPending,
@@ -646,7 +673,7 @@ export default function useHomeScreenController(navigation: any): HomeScreenCont
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-11T13:24:28.925Z
+                at 2024-10-16T20:02:01.244Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
